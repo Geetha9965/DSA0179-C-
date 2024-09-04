@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class BankAccount {
+private:
+    string accountNumber;
+    string accountHolderName;
+    double balance;
+public:
+    BankAccount(string accNum,string accHolder, double bal) {
+        accountNumber = accNum;
+        accountHolderName = accHolder;
+        balance = bal;
+    }
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        } else {
+            cout << "Invalid deposit amount." << endl;
+        }
+    } 
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        } else {
+            cout << "Invalid withdraw amount or insufficient balance." << endl;
+        }
+    }
+    void display() {
+       cout << "Account Number: " << accountNumber << endl;
+        cout << "Account Holder Name: " << accountHolderName << endl;
+        cout << "Balance: " << balance << endl;
+    }
+};
+int main() {
+    BankAccount account("1234567890", "John Doe", 5000);
+    account.deposit(2000);
+    account.withdraw(1000);
+    account.display();
+    return 0;
+}
