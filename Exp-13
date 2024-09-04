@@ -1,0 +1,26 @@
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+int main() {
+    try {
+        int a = 10, b = 0;
+        if (b == 0) {
+            throw runtime_error("Division by zero is not allowed.");
+        }
+        int result = a / b;
+        cout << "Result: " << result << endl;
+        int arr[] = {1, 2, 3};
+        int index = 5;
+        if (index < 0 || index >= 3) {
+            throw out_of_range("Array index out of range.");
+        }
+        cout << "Array element: " << arr[index] << endl;
+    } catch (const runtime_error& e) {
+        cout << "Runtime error: " << e.what() << endl;
+    } catch (const out_of_range& e) {
+        cout << "Out of range error: " << e.what() << endl;
+    } catch (const exception& e) {
+        cout << "Exception: " << e.what() << endl;
+    }
+    return 0;
+}
