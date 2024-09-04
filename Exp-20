@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+void greet(){
+  cout<<"hello world";
+}
+int main(){
+  void(*p)();
+  p=&greet;
+  (greet)();
+  return 0;
+}
