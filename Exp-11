@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int main() {
+    try {
+        int choice;
+        cout << "Enter 1 to throw an int exception, 2 to throw a char exception, 3 to throw a double exception: ";
+        cin >> choice;
+        if (choice == 1) {
+            throw 42;
+        } else if (choice == 2) {
+            throw 'a'; 
+        } else if (choice == 3) {
+            throw 3.14; 
+        } else {
+            throw runtime_error("Invalid choice, throwing a runtime_error exception");
+        }
+    } catch (int e) {
+        cout << "Caught an int exception: " << e << endl;
+    } catch (char e) {
+        cout << "Caught a char exception: " << e << endl;
+    } catch (double e) {
+        cout << "Caught a double exception: " << e << endl;
+    } catch (std::exception& e) {
+        cout << "Caught a standard exception: " << e.what() << endl;
+    }
+    cout << "Program continues after handling exceptions." << endl;
+    return 0;
+}
