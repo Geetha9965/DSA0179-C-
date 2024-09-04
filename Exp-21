@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Shape {
+public:
+    virtual double area() = 0;
+    virtual double volume() = 0;
+};
+class Sphere : public Shape {
+private:
+    double radius;
+public:
+    Sphere(double r) : radius(r) {}
+    double area() override {
+        return 4 * M_PI * pow(radius, 2);
+    }
+    double volume() override {
+        return (4.0 / 3.0) *M_PI * pow(radius, 3);
+    }
+};
+class Cylinder : public Shape {
+private:
+    double radius;
+    double height;
+public:
+    Cylinder(double r, double h) : radius(r), height(h) {}
+    double area() override {
+        return 2 * M_PI * radius * (radius + height);
+    }
+    double volume() override {
+        return M_PI *pow(radius, 2) * height;
+    }
+};
+int main() {
+    Sphere sphere(5); 
+    Cylinder cylinder(3, 7); 
+    cout << "Sphere Area: " << sphere.area() << endl;
+    cout << "Sphere Volume: " << sphere.volume() << endl;
+    cout << "Cylinder Area: " << cylinder.area() << endl;
+    cout << "Cylinder Volume: " << cylinder.volume() << endl;
+    return 0;
+}
