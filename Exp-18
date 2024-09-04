@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class Adder {
+private:
+    int value;
+public:
+    Adder(int v) : value(v) {}
+     bool operator==(Adder a2) {
+        if(value ==a2.value)
+		return true;
+		else
+		return false ;
+    }
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+int main() {
+    Adder a1(10), a2(30);
+    int i;
+    i=(a1==a2);
+    if(i)
+    cout<<"both are equal";
+    else
+    cout<<"both are not equal";
+    return 0;
+}
