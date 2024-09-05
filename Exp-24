@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+void printSpiral(int size) {
+    int row=0, col=0, boundary=size-1,sizeLeft=size-1,flag = 1;
+    char move = 'r';
+    int matrix[5][5];
+    for (int i=1;i<= 5*5; i++) {
+        matrix[row][col] = i;
+        if (move=='r') 
+		col++;
+        else if (move=='l') 
+		col--;
+        else if (move=='u') 
+		row--;
+        else 
+		row++;
+        if (i==boundary) {
+            boundary+=sizeLeft;
+            flag = (flag == 1) ? 2 : (sizeLeft--, 1);
+            move = (move=='r') ? 'd' : (move=='d') ? 'l' : (move=='l') ? 'u' : 'r';
+        }
+    }
+    for (int i=0; i<5;i++) {
+        for (int j=0;j<5;j++) 
+		cout << matrix[i][j] << " ";
+        cout << endl;
+    }
+}
+int main() {
+    printSpiral(5);
+    return 0;
+}
